@@ -2,8 +2,12 @@ import React from 'react'
 import { Link } from 'react-router-dom'
 import Image from './Image'
 import moment from 'moment/moment'
+import { useDispatch } from 'react-redux'
+import { addToCart } from '../actions/cartActions'
 
 const Card = ({product, imgZise, showViewBtn = true}) => {
+
+    let dispatch = useDispatch();
 
     const showStock = (quantity) => {
      
@@ -39,7 +43,7 @@ const Card = ({product, imgZise, showViewBtn = true}) => {
             )}
 
             {product.quantity > 0 && (
-               <button className="btn btn-success">Add to cart</button>
+               <button onClick={() => dispatch(addToCart(product))} className="btn btn-success">Add to cart</button>
             )}
             </div> 
       </div>

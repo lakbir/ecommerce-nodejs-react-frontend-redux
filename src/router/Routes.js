@@ -10,6 +10,8 @@ import AddCategory from '../admin/category/AddCategory';
 import AddProduct from '../admin/product/AddProduct';
 import Shop from '../core/Shop';
 import Product from '../core/Product';
+import Cart from '../core/Cart';
+import ListOrders from '../admin/order/ListOrders';
 
 const Routers = () => {
   return (
@@ -22,10 +24,13 @@ const Routers = () => {
           <Route exact path="/admin/dashboard" element={<AdminDashboard/>}/>
           <Route exact path="/admin/category/create" element={<AddCategory/>}/>
           <Route exact path="/admin/product/create" element={<AddProduct/>}/>
+          <Route exact path="/admin/orders" element={<ListOrders/>}/>
           <Route exact path="/shop" element={<Shop/>}/>
           <Route exact path="/signin" element={<Signin/>}/>
           <Route exact path="/signup" element={<Signup/>}/>
           <Route exact path="/product/:id" element={<Product/>}/>
+          
+          <Route exact path="/cart" element={<Cart />}/>
           <Route path="*" element={<Home/>}/>
         </Routes>
     </Router>

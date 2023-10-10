@@ -18,6 +18,30 @@ export const relatedProducts = (id) => {
 }
 
 
+export const getBraintreeToken = (userId, token) => {
+    return fetch(`${API_URL}braintree/getToken/${userId}`, {
+        method: "GET",
+        headers: {
+            Accept : "application/json",
+            ContentType : "application/json",
+            Authorization : `Bearer ${token}`
+        }})
+            .then(res => res.json());
+}
+
+export const processPayment = (userId, token, paymentData) => {
+    return fetch(`${API_URL}braintree/purchase/${userId}`, {
+        method: "POST",
+        headers: {
+            "Accept" : "application/json",
+            "Content-Type" : "application/json",
+            "Authorization" : `Bearer ${token}`
+        },
+        body: JSON.stringify(paymentData)
+    })
+            .then(res => res.json());
+}
+
 
 export const getCategories = () => {
 
@@ -70,3 +94,16 @@ export const getCategories = () => {
     .then(res => res.products)
     .catch(err => console.error(err))
  }
+
+ export const createOrder = (userId, token, orderData) => {
+    return fetch(`${API_URL}orders/${userId}`, {
+        method: "POST",
+        headers: {
+            "Accept" : "application/json",
+            "Content-Type" : "application/json",
+            "Authorization" : `Bearer ${token}`
+        },
+        body: JSON.stringify(orderData)
+    })
+            .then(res => res.json());
+}
